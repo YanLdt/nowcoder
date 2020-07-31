@@ -2,6 +2,7 @@ package com.yanl.monkey;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * @author yanl
@@ -58,9 +59,63 @@ public class DecodeString {
         while (sc.hasNext()){
             for (int i = 0; i < lineNum; i++) {
                 strs[i] = sc.next();
+                System.out.println(decode(strs[i]));
             }
-            System.out.println(strs[4]);
         }
 
+    }
+
+    /**
+     * 解压缩逻辑
+     * 使用栈来保存字符串开始重复的索引
+     * @param str 待解压字符串
+     * @return 返回解压字符串
+     */
+    private static String decode(String str){
+        StringBuilder sb = new StringBuilder();
+        Stack<Integer> stack = new Stack<Integer>();
+        int len = str.length();
+        char c;
+        int i = 0, j = 0;
+        while(i < len){
+            c = str.charAt(i);
+            if(c == '('){
+                stack.push(sb.length());
+                i++;
+            }else if(c >= 'A' && c <= 'Z'){
+                sb.append(c);
+                i++;
+            }else if(c >= '0' && c <= '9'){
+                j = i;
+                while (i < len && str.charAt(i) >= '0' && str.charAt(i) <= '9'){
+                    i++;
+                }
+                //这边是取数字前最后一个字符来重复，因为目前还没有遇到右括号，所以重复的就只有数字前面的一个字符
+                sb.append(repeat(sb.substring(sb.length() - 1), Integer.parseInt(str.substring(j, i)) - 1));
+            }else if(c == ')'){
+                i++;
+                j = i;
+                while (i < len && str.charAt(i) >= '0' && str.charAt(i) <= '9'){
+                    i++;
+                }
+                //这边重复的是从左括号开始的一段字符串
+                sb.append(repeat(sb.substring(stack.pop()), Integer.parseInt(str.substring(j, i)) - 1));
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 重复字符串
+     * @param str 字符串2
+     * @param n 次数
+     * @return 返回解压缩的字符串
+     */
+    private static String repeat(String str, int n){
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < n; i++){
+            sb.append(str);
+        }
+        return sb.toString();
     }
 }
