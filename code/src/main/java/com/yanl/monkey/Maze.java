@@ -57,6 +57,16 @@ public class Maze {
 
     }
 
+    /**
+     * 递归，使用三维数组存储信息dp[i][j][k]表示在矩阵中位于I,J的点拥有K次机会所能走的最大步数
+     * @param nums 矩阵
+     * @param k 按钮
+     * @param dp 存储结果的数组
+     * @param row 当前行
+     * @param col 当前列
+     * @param cur 当前点周围的最大值 小于该值则需要按钮
+     * @return 返回步数
+     */
     public static int dfs(int[][] nums, int k, int[][][] dp, int row, int col, int cur) {
         int rowMax = nums.length;
         int colMax = nums[0].length;
