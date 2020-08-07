@@ -1,5 +1,7 @@
 package com.yanl.sort;
 
+import java.util.Arrays;
+
 /**
  * @author YanL
  * @Time: 22:30 2020/8/7
@@ -14,9 +16,17 @@ package com.yanl.sort;
  */
 public class ShellSort {
 
+    public static void main(String[] args) {
+        int[] arr = new int[]{1, 5, 4, 2, 8, 3, 7, 6};
+//        bubbleSort(arr, arr.length);
+        shellSort(arr, arr.length);
+        System.out.println(Arrays.toString(arr));
+
+    }
+
 
     public static void shellSort(int[] arr, int len){
-        int gap = len / 3;
+        int gap = len / 2;
         while (gap > 0){
             for(int i = gap; i < len; i++){
                 int temp = arr[i];
@@ -28,7 +38,7 @@ public class ShellSort {
                 }
                 arr[preIndex + gap] = temp;
             }
-            gap /= 3;
+            gap /= 2;
         }
     }
 }
