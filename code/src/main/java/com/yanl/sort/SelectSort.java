@@ -19,8 +19,13 @@ public class SelectSort {
 
     }
 
+    /**
+     * 选择排序
+     * 就选择最小的放前面就完事了
+     * @param arr
+     * @param len
+     */
     public static void selectSort(int[] arr, int len) {
-
         for (int i = 0; i < len - 1; i++) {
             int minIndex = i;
             //找最小元素
