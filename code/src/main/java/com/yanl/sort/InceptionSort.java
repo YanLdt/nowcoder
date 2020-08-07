@@ -28,7 +28,7 @@ public class InceptionSort {
             //此时需要插入的数据
             int cur = arr[i];
             int j = i;
-            //遍历j之前的所有元素，如果存在小于当前元素的跳出
+            //遍历j之前的所有元素,即已经排序的序列最右边开始比较，如果存在小于当前元素的跳出
             while (j > 0 && cur < arr[j-1]){
                 arr[j] = arr[j-1];
                 j--;
