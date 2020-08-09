@@ -1,9 +1,6 @@
 package com.yanl.netease2021;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author YanL
@@ -22,17 +19,44 @@ import java.util.List;
  */
 public class DicOrder {
 
-    public static int[] dicOrder(int n, int m, int[] arr){
-        int[] res = new int[n];
-        ArrayList son = (ArrayList) Arrays.asList(arr);
-        int slow, fast;
-        for(slow = 0; slow < m; slow++){
-            for(fast = slow + 1; fast < m; fast++){
-                if(arr[fast] > arr[slow]){
-
-                }
-            }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[] arr = new int[m];
+        for(int i = 0; i < m; i++){
+            arr[i] = sc.nextInt();
         }
-        return null;
+        dicOrder(n, m, arr);
+    }
+
+    public static void dicOrder(int n, int m, int[] arr){
+        int[] res = new int[n];
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] vis = new boolean[n+1];
+        for(int i = 0; i < m; i++){
+            vis[arr[i]] = true;
+            queue.offer(arr[i]);
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i = 1; i <= n; i++){
+            if(vis[i]){
+                continue;
+            }
+            while (!queue.isEmpty() && queue.peek() < i){
+                sb.append(queue.poll()).append(" ");
+            }
+            sb.append(i).append(" ");
+        }
+        //最大值在最后需要取出
+        while (!queue.isEmpty()){
+            sb.append(queue.poll()).append(" ");
+        }
+        System.out.println(sb.toString().substring(0, sb.length() - 1));
     }
 }
+/*
+5 2
+4 2
+1 3 4 2 5
+*/
