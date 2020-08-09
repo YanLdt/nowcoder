@@ -16,6 +16,7 @@ import java.util.Scanner;
  * 20
  * 样例解释，扔掉第三个和第四个物品，然后将第一个物品和第五个物品给第一个人，第二个物品给第二个人，
  * 每一个人分到的价值为6060，扔掉的价值为2020。
+ *
  * 直接暴力dfs
  */
 public class Divide {
@@ -30,43 +31,9 @@ public class Divide {
             for(int j = 0; j < num; j++){
                 arr[i] = sc.nextInt();
             }
-            System.out.println(throwValue(arr, num));
         }
     }
 
-    public static int throwValue(int[] arr, int len){
-        int sum = 0;
-        for (int i = 0; i < len; i++) {
-            sum += arr[i];
-        }
-        Arrays.sort(arr);
-        for(int i = 0; i < len; i++){
-            int[] tmp = new int[len];
-            tmp = arr;
-            tmp[i] = 0;
-            if(isDone(tmp, len, (sum - arr[i]) / 2)){
-                return tmp[i];
-            }
-        }
-        return 0;
-    }
-
-    public static boolean isDone(int[] arr, int len, int sum){
-        int value = 0;
-        for(int i = 0; i < len; i++){
-            if(value + arr[i] > sum){
-                return false;
-
-            }
-            if(value + arr[i] == sum){
-                return true;
-            }
-            else {
-                value += arr[i];
-            }
-        }
-        return false;
-    }
 }
 
 /*
