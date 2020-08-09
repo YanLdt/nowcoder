@@ -34,21 +34,25 @@ public class DicOrder {
         int[] res = new int[n];
         Queue<Integer> queue = new LinkedList<>();
         boolean[] vis = new boolean[n+1];
+        //将原序列全部入队列
         for(int i = 0; i < m; i++){
             vis[arr[i]] = true;
             queue.offer(arr[i]);
         }
         StringBuilder sb = new StringBuilder();
         for(int i = 1; i <= n; i++){
+            //如果当前数字存在于队列中
             if(vis[i]){
                 continue;
             }
+            //当队列第一个元素小于当前数字
             while (!queue.isEmpty() && queue.peek() < i){
+                //则把队列头部元素取出加入字符串，直到队列头部元素小于待插入数字
                 sb.append(queue.poll()).append(" ");
             }
             sb.append(i).append(" ");
         }
-        //最大值在最后需要取出
+        //最大值如果在最后需要取出
         while (!queue.isEmpty()){
             sb.append(queue.poll()).append(" ");
         }

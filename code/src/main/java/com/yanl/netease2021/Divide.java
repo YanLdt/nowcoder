@@ -16,6 +16,7 @@ import java.util.Scanner;
  * 20
  * 样例解释，扔掉第三个和第四个物品，然后将第一个物品和第五个物品给第一个人，第二个物品给第二个人，
  * 每一个人分到的价值为6060，扔掉的价值为2020。
+ * 直接暴力dfs
  */
 public class Divide {
 
@@ -67,3 +68,11 @@ public class Divide {
         return false;
     }
 }
+
+/*
+1
+5
+30 60 5 15 30
+
+20
+ */
