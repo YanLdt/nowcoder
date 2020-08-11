@@ -14,5 +14,6 @@ public class EntryNodeOfLoop {
         }
         ListNode slowNode = pHead;
         ListNode fastNode = pHead;
+        return null;
     }
 }
