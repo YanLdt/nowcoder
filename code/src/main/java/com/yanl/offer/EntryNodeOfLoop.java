@@ -6,4 +6,13 @@ package com.yanl.offer;
  */
 public class EntryNodeOfLoop {
 
+    public ListNode entryNodeOfLoop(ListNode pHead)
+    {
+        //首先判断链表是否有环
+        if(pHead == null){
+            return null;
+        }
+        ListNode slowNode = pHead;
+        ListNode fastNode = pHead;
+    }
 }
