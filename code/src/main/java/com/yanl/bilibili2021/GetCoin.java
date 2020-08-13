@@ -22,7 +22,7 @@ public class GetCoin {
         for (int i = 1; i <= total; i++) {
             for (int j = 0; j < 4; j++) {
                 if (i >= coins[j]) {
-                    change[i] = Math.min(change[i], change[i - coins[j] + 1]);
+                    change[i] = Math.min(change[i], change[i - coins[j]] + 1);
                 }
             }
         }
