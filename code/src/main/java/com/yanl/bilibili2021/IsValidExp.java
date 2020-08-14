@@ -25,7 +25,7 @@ public class IsValidExp {
             }else {
                 char tmp1 = map.get(tmp);
                 if(stack.isEmpty()){
-                   return true;
+                   return false;
                 }
                 if(tmp1 != stack.pop()){
                     return false;

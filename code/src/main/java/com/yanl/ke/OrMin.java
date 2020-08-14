@@ -34,10 +34,9 @@ public class OrMin {
                 }
                 max >>= 1;
                 highBit++;
-
             }
             if(flag3){
-                left = - (int)Math.pow(2, highBit) + ((int)Math.pow(2, highBit+2) - 1);
+                left = (int)Math.pow(2, highBit) + ((int)Math.pow(2, highBit+2) - 1);
             }
             if(flag2){
                 left = (int)Math.pow(2, highBit+1) - 1;
