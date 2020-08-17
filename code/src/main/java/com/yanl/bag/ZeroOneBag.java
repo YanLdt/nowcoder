@@ -30,11 +30,16 @@ public class ZeroOneBag {
             w[i] = sc.nextInt();
         }
         int [][] dp = new int[N+1][V+1];
-        for(int i = 1; i <= N; i++){
+        for(int i = 1; i < N; i++){
             for(int j = 1; j <= V; j ++){
                 if(j < v[i-1]){
+                    //装不下当前重量，则价值等于前i-1物品的价值
                     dp[i][j] = dp[i-1][j];
                 }else {
+                    //装得下第i件物品
+                    //应为两者较大值
+                    // 1-不装第i件物品的最大价值
+                    // 2-装第i件商品的最大价值：先把第i件物品除去，求剩余j-v[i]体积下装i-1商品的最大价值  再加上第i件物品的价值
                     dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-v[i-1]] + w[i-1]);
                 }
             }
@@ -42,23 +47,29 @@ public class ZeroOneBag {
         System.out.println(dp[N][V]);
     }
 
-    public int bag(int[] v, int[] w, int N, int V){
-
-        int[][] dp = new int[N+1][V+1];
-        for(int i = 1; i <= N; i++){
-            for(int j = 1; j <= V; j++){
-                //装不下当前重量，则价值等于前i-1物品的价值
-                if(w[i] > j){
-                    dp[i][j] = dp[i-1][j];
-                }else {
-                    //装得下第i件物品
-                    //应为两者较大值
-                    // 1-不装第i件物品的最大价值
-                    // 2-装第i件商品的最大价值：先把第i件物品除去，求剩余j-v[i]体积下装i-1商品的最大价值  再加上第i件物品的价值
-                    dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-v[i]] + w[i]);
-                }
+    /**
+     * 空间优化
+     * 一定要注意i-1才是第i个物品
+     * 该题v为体积
+     * w为价值
+     * 搞得我都晕了
+     * 为什么不是重量w和价值v
+     * @param v
+     * @param w
+     * @param N
+     * @param V
+     * @return
+     */
+    public int optimizedBag(int[] v, int[] w, int N, int V){
+        int[] dp = new int[V+1];
+        for(int i = 1; i <= N; i ++){
+            //注意这里一定要倒着遍历，f[j]整个数组都是由上一个状态转换过来的，保证每件物品只能选择0次或者1次
+            //如果从前往后遍历，会导致当前状态后面的值是由当前状态前面的值得出来的。
+            //当前状态的值应该有上一个状态的值转换过来。
+            for(int j = V; j >= v[i-1]; j --){
+                dp[j] = Math.max(dp[j], dp[j-v[i-1]] + w[i-1]);
             }
         }
-        return dp[N][V];
+        return dp[V];
     }
 }
