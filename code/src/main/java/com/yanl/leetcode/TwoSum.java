@@ -10,7 +10,7 @@ import java.util.Map;
  * 使用一个hashMap来存放数组中的元素 元素作为hashKey,下标作为value
  * 判断target-nums[i]是否是hashMap的key。
  * 暴力的话需要两重循环  复杂度为n2
- * HashMap只需要遍历一次复杂度变为n
+ * HashMap只需要遍历一次复杂度变为On
  */
 public class TwoSum {
     public int[] twoSum(int[] nums, int target){
