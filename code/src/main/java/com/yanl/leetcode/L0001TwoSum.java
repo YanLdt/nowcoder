@@ -12,7 +12,7 @@ import java.util.Map;
  * 暴力的话需要两重循环  复杂度为n2
  * HashMap只需要遍历一次复杂度变为On
  */
-public class L001TwoSum {
+public class L0001TwoSum {
     public int[] twoSum(int[] nums, int target){
         Map<Integer, Integer> map = new HashMap<>();
         int len = nums.length;

@@ -20,7 +20,7 @@ import com.yanl.leetcodeutil.ListNode;
  *  循环结束判断进位是否大于0，大于0在后面再添加一个节点
  *  最后返回空节点的next
  */
-public class L002AddTwoSum {
+public class L0002AddTwoSum {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2){
         ListNode dummyHead = new ListNode(0);
         ListNode cur = dummyHead;
