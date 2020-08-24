@@ -39,7 +39,9 @@ public class L1562FindLatestGroupOfM {
         if(arr[index] - 1 >= left && arr[index] - 1 <= right){
             int boundary = arr[index] - 1;
             index--;
-            int l = binaryFind(arr, m, index, left, boundary-1);
+            //边界左边 1的长度
+            int l = binaryFind(arr, m, index, left, boundary - 1);
+            //边界右边 1的长度
             int r = binaryFind(arr, m, index, boundary+1, right);
             return Math.max(l, r);
         }else{
