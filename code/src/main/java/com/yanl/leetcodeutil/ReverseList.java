@@ -21,7 +21,7 @@ public class ReverseList {
             //先存储node的next 防止链表丢失
             next = node.next;
             //将node的下一个节点指向空节点，即变为最后一个节点
-            node.next = null;
+            node.next = pre;
             //然后将pre=node
             pre = node;
             //node变为next
