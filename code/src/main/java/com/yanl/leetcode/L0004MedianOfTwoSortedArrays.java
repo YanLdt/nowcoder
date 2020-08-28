@@ -7,6 +7,7 @@ package com.yanl.leetcode;
  * 给定两个大小为m和n的正序数组
  * 找出两个正序数组的中位数
  * O(log(m+n))
+ * 二分查找，转化为求第k个数
  */
 public class L0004MedianOfTwoSortedArrays {
     public double findMedianSortedArrays(int[] nums1, int[] nums2){
