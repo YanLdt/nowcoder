@@ -17,7 +17,13 @@ import java.util.Scanner;
  *
  * 查询操作：2 x，表示询问当前B序列下标x处的值是多少。
  *
- *
+5
+1 5 3 4 2
+2 3 5 4 1
+5 4 1 2 3
+1 2 5 4 3
+1 4 5 2 3
+ *1 2 5 4 3
  */
 public class CtrlCV {
     public static void main(String[] args) {
