@@ -10,6 +10,8 @@ import java.util.Arrays;
  * 根据一棵树的前序遍历与中序遍历构造二叉树。
  * 重建二叉树
  * 注意边界  注意边界  注意边界   注意边界   注意边界
+ * 递归
+ * 每次找到根节点然后递归重建左右两边
  */
 public class L0105ConstructBinaryTreeFromPreOrderAndInOrder {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
