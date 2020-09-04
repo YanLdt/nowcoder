@@ -16,8 +16,8 @@ public class L0141LinkedListCircle {
             return false;
         }
         ListNode slow = head;
-        ListNode fast = head.next;
-        while (slow != fast){
+        ListNode fast = head;
+        do{
             //如果快节点到达末尾，为空的时候说明链表没环
             if(fast == null || fast.next == null){
                 return false;
@@ -25,7 +25,7 @@ public class L0141LinkedListCircle {
             //慢指针走一步，快指针走两步
             slow = slow.next;
             fast = fast.next.next;
-        }
+        }while (slow != fast);
         return true;
     }
 }
