@@ -1,8 +1,5 @@
-package com.yanl.baoidu0903;
+package com.yanl.baidu0903;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 /**
