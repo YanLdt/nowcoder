@@ -13,14 +13,14 @@ import com.yanl.leetcodeutil.ListNode;
 public class L0082RemoveDuplicatesFromSortedList {
     public ListNode deleteDuplicates(ListNode head) {
         ListNode res = new ListNode(0);
-        res.next = head;
+        //res.next = head;
         ListNode cur = head, pre = head;
         ListNode tail = res;
         for (;pre != null; pre = cur){
             while (cur != null && pre.val == cur.val){
                 cur = cur.next;
             }
-            if(pre.next != cur){
+            if(pre.next == cur){
                 tail.next = pre;
                 tail = pre;
                 tail.next = null;

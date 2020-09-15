@@ -22,7 +22,7 @@ public class DeleteDuplicateNode {
                 cur = cur.next;
             }
             //如果前后两个节点不相等 直接插入
-            if(pre.next != cur){
+            if(pre.next == cur){
                 tail.next = pre;
                 tail = pre;
                 tail.next = null;
