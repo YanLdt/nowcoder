@@ -65,7 +65,7 @@ public class L0215KthLargestElementInArray {
             l++;
             r--;
         }
-        swap(nums, l, left);
+        swap(nums, r, left);
         return r;
     }
 
