@@ -1,5 +1,7 @@
 package com.yanl.leetcode;
 
+import java.util.LinkedList;
+
 /**
  * @author YanL
  * @date 21:42 2020/9/21
@@ -19,25 +21,52 @@ package com.yanl.leetcode;
  *  1  3  -1 [-3  5  3] 6  7       5
  *  1  3  -1  -3 [5  3  6] 7       6
  *  1  3  -1  -3  5 [3  6  7]      7
+ *  使用双端队列
  *
  */
 public class L0239SlidingWindowMax {
     public int[] maxSlidingWindow(int[] nums, int k) {
-        int len = nums.length;
-
-        int sum = 0;
-        int[] res = new int[len - k + 1];
-        for(int i = 0; i < k; i ++){
-            sum += nums[i];
+        if(nums == null || nums.length < 2){
+            return nums;
         }
-        res[0] = sum;
-        int left = 1;
-        int right = left + k;
-        for(int i = 1; i < res.length; i ++){
-            sum += nums[right-1] - nums[left-1];
-            res[i] = sum;
-            left++;
-            right++;
+
+        //双向队列，保存当前窗口最大值的数组位置
+        LinkedList<Integer> queue = new LinkedList<>();
+        int len = nums.length;
+        int[] res = new int[len - k + 1];
+        for(int i = 0; i < len; i ++){
+            //res[i] = findMax(nums, i, i + k);
+            //如果当前元素大于队列最后元素，则弹出队列最后一个元素
+            //保证队首是最大元素的下标
+            while (!queue.isEmpty() && nums[queue.peekLast()] <= nums[i]){
+                queue.pollLast();
+            }
+            //每次都从后面入队
+            queue.addLast(i);
+            //如果当前最前元素不在窗口内，则弹出最前元素
+            if(queue.peek() <= i - k){
+                queue.poll();
+            }
+            //当到达窗口末尾时，队列最前元素就是结果
+            if(i + 1 >= k){
+                res[i + 1 - k] = nums[queue.peek()];
+            }
+        }
+        return res;
+    }
+
+
+    /**
+     * 暴力超时
+     * @param nums
+     * @param left
+     * @param right
+     * @return
+     */
+    public int findMax(int[] nums, int left, int right){
+        int res = Integer.MIN_VALUE;
+        for(int i = left; i < right; i ++){
+            res = Math.max(res, nums[i]);
         }
         return res;
     }
